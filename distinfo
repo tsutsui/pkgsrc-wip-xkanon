@@ -1,0 +1,20 @@
+$NetBSD$
+
+SHA1 (xkanon-071209.tar.gz) = 4fcb7e4136f9b2265ea79ab96fb257cda7854aef
+RMD160 (xkanon-071209.tar.gz) = 779005a2a5aad4d0922cce3a34b618f47e0f6370
+Size (xkanon-071209.tar.gz) = 494758 bytes
+SHA1 (xkanon-gtk2-090830.tar.gz) = f306024a2dbdd8188488b5f63f3725ab4ca9cc74
+RMD160 (xkanon-gtk2-090830.tar.gz) = 8b2c1d6491b1f82df2ccde42a954bfa38bab801a
+Size (xkanon-gtk2-090830.tar.gz) = 667208 bytes
+SHA1 (patch-Makefile.in) = d54f8bdba33786b08f6716cacceaba4b31980740
+SHA1 (patch-ayusys__gtk2.ja.po) = ea38d7143447fec140b5df5f026c2ed2fb7b128b
+SHA1 (patch-configure) = 8a93ce6b413ef8850d8c6b6a7cdb45a5cfa812ed
+SHA1 (patch-configure.in) = 9a58bae196eb993c1bce268d035fcf1df8b88c05
+SHA1 (patch-file.cc) = ece335566e5b2c7759f8a00250aa321b94b93e36
+SHA1 (patch-file.h) = c196c45e60e99ea3e54e4787cafdb13939e60901
+SHA1 (patch-image__di__Xbpp.cc) = a620aec7f7c4456daa940727068a29fdef4094e8
+SHA1 (patch-image__di__impl.h) = e4a1b82193a5e526a8a41e8d978d7aac90d818d4
+SHA1 (patch-image__di__selimpl1.cc) = f91a76dbbe95c1bb9122857429f3727d2085bf74
+SHA1 (patch-image__di__selimpl3.cc) = f31432d5191781047871894c94157331ce4fd118
+SHA1 (patch-senario__flags.cc) = 7f3004b13980453f3e34d61f78d88cf95d5a6d83
+SHA1 (patch-window__text.cc) = c50719ec7e1dad0d7c133f7b699d33e92d5f54c8
