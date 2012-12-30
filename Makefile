@@ -12,8 +12,6 @@ HOMEPAGE=	http://www.creator.club.ne.jp/~jagarl/
 COMMENT=	Interpreter to execute AVG32 games for Microsoft Windows
 LICENSE=	gnu-gpl-v2
 
-PKG_DESTDIR_SUPPORT=	user-destdir
-
 WRKSRC=		${WRKDIR}/xkanon-gtk
 GNU_CONFIGURE=  yes
 USE_LANGUAGES=	c c++
