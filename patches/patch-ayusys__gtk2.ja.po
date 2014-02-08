@@ -1,5 +1,7 @@
 $NetBSD$
 
+Add proper headers to print Japanese encoding messages.
+
 --- ayusys_gtk2.ja.po.orig	2012-01-20 16:45:37.000000000 +0000
 +++ ayusys_gtk2.ja.po
 @@ -1,6 +1,8 @@
