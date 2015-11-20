@@ -16,7 +16,7 @@ WRKSRC=		${WRKDIR}/xkanon-gtk
 GNU_CONFIGURE=  yes
 USE_LANGUAGES=	c c++
 
-USE_TOOLS+=	msgfmt
+USE_TOOLS+=	msgfmt pkg-config
 
 post-extract:
 	cp ${WRKDIR}/xkanon/ayusys.ja.po ${WRKDIR}/xkanon-gtk/ayusys_gtk2.ja.po
