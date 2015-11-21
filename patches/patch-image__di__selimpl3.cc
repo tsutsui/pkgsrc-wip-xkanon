@@ -1,10 +1,24 @@
 $NetBSD$
 
-Explicitly use unsigned char instead of char because
-`char' is unsigned by default on arm and powerpc.
+- Explicitly use unsigned char instead of char because
+  `char' is unsigned by default on arm and powerpc.
+- Fix LP64 issue.  
 
 --- image_di_selimpl3.cc.orig	2009-08-29 23:12:54.000000000 +0000
 +++ image_di_selimpl3.cc
+@@ -22,10 +22,10 @@ RegisterSelMacro(70, TLI4(70,71,72,73), 
+ 		int i; for (i=0; i<line_deal; i++) {
+ 			line_counts[i] = -sel->arg4 * (AyuSys::Rand(sel->arg5));
+ 		}
+-		sel->params[0] = int(line_counts);
++		sel->params[0] = long(line_counts);
+ 		sel->params[1] = line_deal;
+ 		sel->params[2] = line_width;
+-		sel->params[3] = int(line_firsts);
++		sel->params[3] = long(line_firsts);
+ 		sel->params[4] = -1;
+ 	}
+ 	int* line_counts = (int*)sel->params[0];
 @@ -82,9 +82,9 @@ RegisterSelMacro(70, TLI4(70,71,72,73), 
  			char* s = src_pt + lf * ByPP;
  			char* m = mask_pt + lf;
@@ -29,3 +43,27 @@ Explicitly use unsigned char instead of char because
  					else SetMiddleColor(d, s, mask_char);
  				}
  				d += dest.bpl; s += src.bpl; if (IsMask) m += src.width;
+@@ -139,10 +139,10 @@ RegisterSelMacro(80, TLI4(80,81,82,83), 
+ 		int i; for (i=0; i<line_deal; i++) {
+ 			line_counts[i] = -sel->arg4 * (AyuSys::Rand(sel->arg5));
+ 		}
+-		sel->params[0] = int(line_counts);
++		sel->params[0] = long(line_counts);
+ 		sel->params[1] = line_deal;
+ 		sel->params[2] = line_width;
+-		sel->params[3] = int(line_firsts);
++		sel->params[3] = long(line_firsts);
+ 		sel->params[4] = -1;
+ 	}
+ 	int* line_counts = (int*)sel->params[0];
+@@ -364,8 +364,8 @@ RegisterSelMacro(170, TLI1(170), WithMas
+ 		DI_Image* dest_orig = new DI_Image;
+ 		dest_orig->CreateImage(width, height, ByPP);
+ 		CopyRect(*dest_orig, 0, 0, dest, sel->x3, sel->y3, width, height);
+-		sel->params[0] = int(dest_orig->data);
+-		sel->params[1] = int(dest_orig);
++		sel->params[0] = long(dest_orig->data);
++		sel->params[1] = long(dest_orig);
+ 	}
+ 	int w_width = 0; int copy_line = 0;
+ 	DI_Image& dest_orig = *(DI_Image*)sel->params[1];
