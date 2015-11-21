@@ -3,6 +3,7 @@ $NetBSD$
 - Explicitly use unsigned char instead of char because
   `char' is unsigned by default on arm and powerpc.
 - Fix LP64 issue.  
+- Appease LP64 warnings.
 
 --- image_di_selimpl3.cc.orig	2009-08-29 23:12:54.000000000 +0000
 +++ image_di_selimpl3.cc
@@ -67,3 +68,12 @@ $NetBSD$
  	}
  	int w_width = 0; int copy_line = 0;
  	DI_Image& dest_orig = *(DI_Image*)sel->params[1];
+@@ -387,7 +387,7 @@ RegisterSelMacro(170, TLI1(170), WithMas
+ 			else
+ 				CopyRect(dest_orig, 0, sel->params[2]+i, src, sel->x1, sel->y1+sel->params[2]+i, width, copy_line-sel->params[2]);
+ 		}
+-printf("copy line %3d->%3d\n",sel->params[2],copy_line);
++printf("copy line %3ld->%3d\n",sel->params[2],copy_line);
+ 		sel->params[2] = copy_line;
+ 	}
+ 	double theta = sel->params[3]*(4*3.141592*2/360); /* sin うねりの最初の角度は radian 単位で sel->params[3]*4 度 */
