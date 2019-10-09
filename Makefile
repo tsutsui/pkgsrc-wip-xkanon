@@ -14,7 +14,7 @@ LICENSE=	gnu-gpl-v2
 
 WRKSRC=		${WRKDIR}/xkanon-gtk
 GNU_CONFIGURE=  yes
-USE_LANGUAGES=	c c++
+USE_LANGUAGES=	c c++03
 
 USE_TOOLS+=	msgfmt pkg-config
 
