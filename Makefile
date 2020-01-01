@@ -7,7 +7,7 @@ CATEGORIES=	games
 MASTER_SITES=	http://www.creator.club.ne.jp/~jagarl/
 DISTFILES=	${DEFAULT_DISTFILES} xkanon-071209.tar.gz
 
-MAINTAINER=	pkgsrc-users@NetBSD.org
+MAINTAINER=	tsutsui@NetBSD.org
 HOMEPAGE=	http://www.creator.club.ne.jp/~jagarl/
 COMMENT=	Interpreter to execute AVG32 games for Microsoft Windows
 LICENSE=	gnu-gpl-v2
