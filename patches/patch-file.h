@@ -1,48 +1,76 @@
 $NetBSD$
 
-Use proper byteorder functions to decode integer from byte stream.
-XXX NetBSD only
+Avoid unalignd word accesses even on little endian (for arm and mips).
 
 --- file.h.orig	2008-01-06 06:20:00.000000000 +0000
 +++ file.h
-@@ -44,6 +44,32 @@
- #  endif
- #endif
+@@ -38,27 +38,19 @@
+ #include<stdlib.h>
+ #include<string.h>
  
-+#ifdef __NetBSD__
-+
+-#if defined(__sparc) || defined(sparc)
+-#  if !defined(WORDS_BIGENDIAN)
+-#    define WORDS_BIGENDIAN 1
+-#  endif
+-#endif
 +#define INT_SIZE sizeof(int)
-+
-+inline int read_little_endian_int(const char* buf) {
-+	return le32dec(buf);
-+}
-+
-+inline int read_little_endian_short(const char* buf) {
-+	return le16dec(buf);
-+}
-+
-+inline int write_little_endian_int(char* buf, int number) {
-+	int c = le32dec(buf);
-+	le32enc(buf, number);
-+	return c;
-+}
-+
-+inline int write_little_endian_short(char* buf, int number) {
-+	int c = le16dec(buf);
-+	le16enc(buf, number);
-+	return c;
-+}
-+
-+#else // !__NetBSD__
-+
- #ifdef WORDS_BIGENDIAN
  
- #define INT_SIZE 4
-@@ -103,6 +129,7 @@ inline int write_little_endian_short(cha
- 	int c = *(short*)buf; *(short*)buf = number; return c;
+-#ifdef WORDS_BIGENDIAN
+-
+-#define INT_SIZE 4
+-
+-static int read_little_endian_int(const char* buf) {
++static inline int read_little_endian_int(const char* buf) {
+ 	const unsigned char *p = (const unsigned char *) buf;
+ 	return (p[3] << 24) | (p[2] << 16) | (p[1] << 8) | p[0];
  }
- #endif // WORDS_BIGENDIAN
-+#endif // __NetBSD__
  
+-static int read_little_endian_short(const char* buf) {
++static inline int read_little_endian_short(const char* buf) {
+ 	const unsigned char *p = (const unsigned char *) buf;
+ 	return (p[1] << 8) | p[0];
+ }
+ 
+-static int write_little_endian_int(char* buf, int number) {
++static inline int write_little_endian_int(char* buf, int number) {
+ 	int c = read_little_endian_int(buf);
+ 	unsigned char *p = (unsigned char *) buf;
+ 	unsigned int unum = (unsigned int) number;
+@@ -72,7 +64,7 @@ static int write_little_endian_int(char*
+ 	return c;
+ }
+ 
+-static int write_little_endian_short(char* buf, int number) {
++static inline int write_little_endian_short(char* buf, int number) {
+ 	int c = read_little_endian_short(buf);
+ 	unsigned char *p = (unsigned char *) buf;
+ 	unsigned int unum = (unsigned int) number;
+@@ -82,28 +74,6 @@ static int write_little_endian_short(cha
+ 	return c;
+ }
+ 
+-#else // defined(WORDS_BIGENDIAN)
+-
+-// assume little endian...
+-#define INT_SIZE 4
+-
+-inline int read_little_endian_int(const char* buf) {
+-	return *(int*)buf;
+-}
+-
+-inline int read_little_endian_short(const char* buf) {
+-	return *(short*)buf;
+-}
+-
+-inline int write_little_endian_int(char* buf, int number) {
+-	int c = *(int*)buf; *(int*)buf = number; return c;
+-}
+-
+-inline int write_little_endian_short(char* buf, int number) {
+-	int c = *(short*)buf; *(short*)buf = number; return c;
+-}
+-#endif // WORDS_BIGENDIAN
+-
  /*********************************************
  **  FILESEARCH:
+ **	書庫ファイル／ディレクトリを含め、
