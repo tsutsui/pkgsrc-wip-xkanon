@@ -4,7 +4,8 @@
 DISTNAME=	xkanon-gtk2-090830
 PKGNAME=	xkanon-090830
 CATEGORIES=	games
-MASTER_SITES=	http://www.creator.club.ne.jp/~jagarl/
+#MASTER_SITES=	http://www.creator.club.ne.jp/~jagarl/
+MASTER_SITES=	http://ryo-on.users.sourceforge.net/distrib/
 DISTFILES=	${DEFAULT_DISTFILES} xkanon-071209.tar.gz
 
 MAINTAINER=	tsutsui@NetBSD.org
