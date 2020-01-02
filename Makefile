@@ -8,7 +8,7 @@ MASTER_SITES=	http://www.creator.club.ne.jp/~jagarl/
 DISTFILES=	${DEFAULT_DISTFILES} xkanon-071209.tar.gz
 
 MAINTAINER=	tsutsui@NetBSD.org
-HOMEPAGE=	http://www.creator.club.ne.jp/~jagarl/
+HOMEPAGE=	https://web.archive.org/web/20100409004347/http://www.creator.club.ne.jp/~jagarl/xkanon.html
 COMMENT=	Interpreter to execute AVG32 games for Microsoft Windows
 LICENSE=	gnu-gpl-v2
 
